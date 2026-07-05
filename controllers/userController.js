@@ -1,7 +1,6 @@
 const User = require("../models/User")
 const transporter=require('../config/email')
-const dotenv=require('dotenv')
-dotenv.config()
+
 // Create User
 exports.createUser = async (req, res) => {
     try {
