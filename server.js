@@ -8,6 +8,7 @@ const logger = require("./middleware/logger");
 
 const errorHandler = require("./middleware/errorMiddleware");
 
+
 dotenv.config();
 
 connectDB();
@@ -21,6 +22,7 @@ app.use(logger);
 app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/products", require("./routes/productRoute"));
 app.use(errorHandler);
+
 
 const PORT = process.env.PORT || 5000;
 
