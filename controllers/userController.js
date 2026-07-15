@@ -6,12 +6,13 @@ exports.createUser = async (req, res) => {
     try {
 
         const user = await User.create(req.body);
-         await transporter.sendMail({
+         const info=await transporter.sendMail({
             from:process.env.EMAIL,
             to:user.email,
             subject:"Welcome to our app",
             text:`Hello ${user.name}, welcome to our app!`
          })
+         console.log(info)
         res.status(201).json( {
             success: true,
             message: "User created and email sent successfully",data: req.body.image,user
@@ -19,7 +20,7 @@ exports.createUser = async (req, res) => {
         });     
 
     } catch (error) {
-
+        console.error(error)
         res.status(500).json({
             message: error.message
         });
